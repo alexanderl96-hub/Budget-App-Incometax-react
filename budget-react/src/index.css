@@ -7,7 +7,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.nav{
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-shadow: 2px 2px 4px black;
+}
+.link{
+   font-size: 40px;
+}
+.link2{
+  font-size: 35px;
+}
+.title{
+  color: red;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.table{
+  margin: auto;
+  margin-left: 60px;
+}
+td {
+  text-align: center;
+}
+.mybank{
+  margin-left: 250px;
 }
