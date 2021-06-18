@@ -8,51 +8,68 @@ const API_BASE = apiURL()
  function Logsapi(props) {
     const {deleteBudget} = props
 
-    const [budget, setBudget1] = useState([])
-    let {index} = useParams() 
-    let history = useHistory()
+    const [budget, setBudget] = useState([])
+    // let {index} = useParams() 
+    // let history = useHistory()
 
+//    useEffect(()=>{
+//        axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
+//            const { data} = res
+//            setBudget(data)
+//        }).catch((e)=>{
+//         history.push('/not-found')
+//     })
+//    }, [index, history ])
+    const date = "May-1"
+    const taxes = 0.50
+    const retirement = 300
+    const save = 5000
+    const creditcard = 3000
+    const market = 20
+    const internet = 23
+    const pet = 23
+    const car = 90
+    const insurrance = 20
+    const additional = 46
+    
+    
+    
 
-    useEffect(()=>{
-        axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
-            const { data } = res
-            setBudget1(data)
-        }).catch((e)=>{
-            history.push("/not-found")
-        })
-    } ,[index, history])
+    
+
+    
     const handleDelete = () => {};
 
     return (  
         <article>
-            
            <div className="showButton">
                 <div>
                     <Link to={`/transactions`}> 
-                        <button>Back</button>
+                        <button className="btn">Back</button>
                     </Link>
                 </div>
                 <div>
-                    <Link to={`/transactions/${index}/edit`}> 
-                        <button>Edit</button>
+                    <Link to={`/transactions/:index/edit`}> 
+                        <button className="btn">Edit</button>
                     </Link>
                 </div>
                 <div>
-                <button onClick={handleDelete}>Delete</button>
+                <button onClick={handleDelete} className="btn">Delete</button>
                 </div>
            </div> 
            <div className="info">
-              <strong>{budget.taxes}</strong>
-                <h3>
-                    {budget.save}
-                </h3>
-                <h4>
-                    {budget.car}
-                </h4>  
-                <p>
-                {budget.additional}
-                </p> 
-                <h3>Aqui debe ir la informacion que le sigue</h3>
+                <strong>Date {date}</strong>
+                <p>Taxes % {taxes}</p>
+                <p>Retirement $ {retirement}</p>
+                <p>Save $ {save}</p>
+                <p>CreditCard $ {creditcard}</p>
+                <p>Market $ {market}</p>
+                <p>Internet $ {internet}</p>  
+                <p>Pet $ {pet}</p>  
+                <p>Car    $     {car}</p> 
+                <p>Insurrance $ {insurrance}</p>   
+                <p>Additional $ {additional}</p> 
+                {/* <h3>Aqui debe ir la informacion que le sigue</h3> */}
            </div>
         </article>
         

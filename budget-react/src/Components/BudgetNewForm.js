@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {withRouter} from "react-router-dom"
 
-export default function BudgetNewForm(props) {
+ function BudgetNewForm(props) {
     const [budget, setBudget] = useState({
         date: '',
         taxes: [],
@@ -14,12 +14,13 @@ export default function BudgetNewForm(props) {
         car: [],
         insurrance: [],
         additional: [],
+        made: false,
     })
     const HandleInput =(e)=>{
         setBudget({...budget, [e.target.id]:e.target.value})
     }
     const HandleCheck =()=>{
-        setBudget({...budget, date: !budget.date})
+        setBudget({...budget, made: !budget.made})
     }
     const HandleSubmit =(e)=>{
         e.preventDefault()
@@ -27,8 +28,8 @@ export default function BudgetNewForm(props) {
         props.history.push("/transactions")
     }
     return (
-        <div>
-            <form onSubmit={HandleSubmit}>
+        <div >
+            <form onSubmit={HandleSubmit} className="form">
             <label htmlFor="date">Date:</label>
             <input
             id="date"
@@ -117,9 +118,22 @@ export default function BudgetNewForm(props) {
             onChange={HandleInput}
             placeholder="$ Amount"
             required/>
-            <button type='submit'>Submit Budget</button>
+            <label htmlFor="made">Made:</label>
+            <input
+            id="made"
+            value={budget.made}
+            />
+            Checkbox <input
+            id="made"
+            type="checkbox"
+            onChange={HandleCheck}
+            checked={budget.made}
+            className ="checkbox"
+            /> 
+            <button type='submit' className="btnform">Submit Budget</button>
             </form>
            
         </div>
     )
 }
+export default withRouter(BudgetNewForm)
