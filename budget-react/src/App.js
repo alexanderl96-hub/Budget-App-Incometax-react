@@ -59,10 +59,10 @@ function App() {
                <New addBudget={addBudget}/>
             </Route>
             <Route exact path="/transactions/:index">
-               <Show budge={budget} deletelogs={deleteBudget}/>
+               <Show budge={budget} deleteBudget={deleteBudget}/>
             </Route>
             <Route path="/transactions/:index/edit">
-               <Edit budget={budget} deletelogs={updateBudget}/>
+               <Edit budget={budget} deleteBudget={updateBudget}/>
             </Route>
             <Route path="*">
                <Four0Four />

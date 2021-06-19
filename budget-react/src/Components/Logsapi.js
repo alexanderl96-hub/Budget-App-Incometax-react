@@ -9,28 +9,28 @@ const API_BASE = apiURL()
     const {deleteBudget} = props
 
     const [budget, setBudget] = useState([])
-    // let {index} = useParams() 
-    // let history = useHistory()
+    let {index} = useParams() 
+    let history = useHistory()
 
-//    useEffect(()=>{
-//        axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
-//            const { data} = res
-//            setBudget(data)
-//        }).catch((e)=>{
-//         history.push('/not-found')
-//     })
-//    }, [index, history ])
-    const date = "May-1"
-    const taxes = 0.50
-    const retirement = 300
-    const save = 5000
-    const creditcard = 3000
-    const market = 20
-    const internet = 23
-    const pet = 23
-    const car = 90
-    const insurrance = 20
-    const additional = 46
+   useEffect(()=>{
+       axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
+           const { data} = res
+           setBudget(data)
+       }).catch((e)=>{
+        history.push('/not-found')
+    })
+   }, [index, history ])
+    // const date = "May-1"
+    // const taxes = 0.50
+    // const retirement = 300
+    // const save = 5000
+    // const creditcard = 3000
+    // const market = 20
+    // const internet = 23
+    // const pet = 23
+    // const car = 90
+    // const insurrance = 20
+    // const additional = 46
     
     
     
@@ -49,7 +49,7 @@ const API_BASE = apiURL()
                     </Link>
                 </div>
                 <div>
-                    <Link to={`/transactions/:index/edit`}> 
+                    <Link to={`/transactions/${index}/edit`}> 
                         <button className="btn">Edit</button>
                     </Link>
                 </div>
@@ -58,17 +58,17 @@ const API_BASE = apiURL()
                 </div>
            </div> 
            <div className="info">
-                <strong>Date {date}</strong>
-                <p>Taxes % {taxes}</p>
-                <p>Retirement $ {retirement}</p>
-                <p>Save $ {save}</p>
-                <p>CreditCard $ {creditcard}</p>
-                <p>Market $ {market}</p>
-                <p>Internet $ {internet}</p>  
-                <p>Pet $ {pet}</p>  
-                <p>Car    $     {car}</p> 
-                <p>Insurrance $ {insurrance}</p>   
-                <p>Additional $ {additional}</p> 
+                <strong>Date {budget.date}</strong>
+                <p>Taxes % {budget.taxes}</p>
+                <p>Retirement $ {budget.retirement}</p>
+                <p>Save $ {budget.save}</p>
+                <p>CreditCard $ {budget.creditcard}</p>
+                <p>Market $ {budget.market}</p>
+                <p>Internet $ {budget.internet}</p>  
+                <p>Pet $ {budget.pet}</p>  
+                <p>Car    $     {budget.car}</p> 
+                <p>Insurrance $ {budget.insurrance}</p>   
+                <p>Additional $ {budget.additional}</p> 
                 {/* <h3>Aqui debe ir la informacion que le sigue</h3> */}
            </div>
         </article>
