@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import {Link, useParams, useHistory, withRouter } from "react-router-dom"
 import axios from "axios"
-import {apiURL} from "../Back-end/apiURl"
+import {apiURL} from "../Back-end/apiURl.js"
 
 const API_BASE = apiURL()
 
  function Logsapi(props) {
     const {deleteBudget} = props
 
-    const [budget, setBudget] = useState([])
-    let {index} = useParams() 
+    const [ budget, setBudget] = useState([])
+    let { index } = useParams() 
     let history = useHistory()
 
    useEffect(()=>{
@@ -19,18 +19,18 @@ const API_BASE = apiURL()
        }).catch((e)=>{
         history.push('/not-found')
     })
-   }, [index, history ])
-    // const date = "May-1"
-    // const taxes = 0.50
-    // const retirement = 300
-    // const save = 5000
-    // const creditcard = 3000
-    // const market = 20
-    // const internet = 23
-    // const pet = 23
-    // const car = 90
-    // const insurrance = 20
-    // const additional = 46
+   }, [ index, history ])
+    const date = "May-1"
+    const taxes = 0.50
+    const retirement = 300
+    const save = 5000
+    const creditcard = 3000
+    const market = 20
+    const internet = 23
+    const pet = 23
+    const car = 90
+    const insurrance = 20
+    const additional = 46
     
     
     
@@ -59,16 +59,16 @@ const API_BASE = apiURL()
            </div> 
            <div className="info">
                 <strong>Date {budget.date}</strong>
-                <p>Taxes % {budget.taxes}</p>
-                <p>Retirement $ {budget.retirement}</p>
-                <p>Save $ {budget.save}</p>
-                <p>CreditCard $ {budget.creditcard}</p>
-                <p>Market $ {budget.market}</p>
-                <p>Internet $ {budget.internet}</p>  
-                <p>Pet $ {budget.pet}</p>  
-                <p>Car    $     {budget.car}</p> 
-                <p>Insurrance $ {budget.insurrance}</p>   
-                <p>Additional $ {budget.additional}</p> 
+                {/* <p>Taxes % {taxes}</p>
+                <p>Retirement $ {retirement}</p>
+                <p>Save $ {save}</p>
+                <p>CreditCard $ {creditcard}</p>
+                <p>Market $ {market}</p>
+                <p>Internet $ {internet}</p>  
+                <p>Pet $ {pet}</p>  
+                <p>Car    $     {car}</p> 
+                <p>Insurrance $ {insurrance}</p>   
+                <p>Additional $ {additional}</p>  */}
                 {/* <h3>Aqui debe ir la informacion que le sigue</h3> */}
            </div>
         </article>

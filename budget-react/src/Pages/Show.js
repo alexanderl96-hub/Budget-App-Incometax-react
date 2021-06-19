@@ -4,13 +4,13 @@ import Logsapi from "../Components/Logsapi.js";
 
 function Show({ deleteBudget, budge}) {
   let { index } = useParams();
-  const [budget] = useState(budge[index]);
+  const [ budget] = useState(budge[index]);
   return (
     <div className="Show">
       <h2 className="Show2">Show</h2>
       <section>
         <Logsapi
-           budge={budget}
+           budget={budget}
            index ={ index }
            deleteBudget={deleteBudget} 
         />

@@ -1,6 +1,6 @@
 import MapingLogs from './MapingLogs'
 
-export default function Filters({budget }) {
+export default function Filters({budget}) {
      const value = 5000
     return (
         <div>
