@@ -6,7 +6,7 @@ import {apiURL} from "./Back-end/apiURl.js";
 //Pages to represent the info in the browser
 import Navbar from "./Components/Navbar.js"
 import Home from "./Pages/Home"
-import Datalogs from "./Pages/Datalogs.js";
+import Index from "./Pages/Index.js";
 import Show from "./Pages/Show"
 import Edit from "./Pages/Edit"
 import New from "./Pages/New"
@@ -20,9 +20,13 @@ function App() {
   // "Another way to doit in large web app": Myra concept 
   const addBudget = (newBudget)=>{
     axios.post(`${API_BASE}/transactions`, newBudget).then((res)=>{
-     setBudget([...budget, newBudget])
-    }, (error)=> console.error(error)
-    ).catch((e)=>{})
+      return axios.get(`${API_BASE}/transactions`)
+    }).then((res)=>{
+      setBudget(res.data)
+    })
+    .catch((e)=>{
+      console.log(e)
+    })
   }
   // "Another way to doit in short web app": 
   // => [ const addBudget = (newBudget)=>{
@@ -32,13 +36,33 @@ function App() {
   //      ).catch((e)=>{})
   //      }
   //     ]
-  const deleteBudget = (index)=>{}
-  const updateBudget = (updateBudget, index)=>{}
+  const deleteBudget = (index)=>{
+    axios.delete(`${API_BASE}/transactions/${index}`).then(
+      (res)=>{
+        const del = [...budget]
+        del.splice(index, 1)
+        setBudget(del)
+      },
+      (err)=>{console.log(err)})
+  }
+  const updateBudget = (updateBudget, index)=>{
+    axios.put(`${API_BASE}/transactions/${index}`, updateBudget).then(
+      //success
+      (res)=>{
+        const update = [...budget]
+        update[index]= updateBudget
+        setBudget(update)
+      },
+      //error
+      (error)=>{
+        console.log(error)
+      }
+    )
+  }
 
   useEffect(()=> {
     axios.get(`${API_BASE}/transactions`).then((res)=>{
       const {data} = res
-      console.log(data)
       setBudget(data)
     })
   }, [])
@@ -53,7 +77,7 @@ function App() {
               <Home />
             </Route>
             <Route exact path="/transactions">
-               <Datalogs budget={budget}/>
+               <Index budget={budget}/>
             </Route>
             <Route path="/transactions/new">
                <New addBudget={addBudget}/>
@@ -62,7 +86,7 @@ function App() {
                <Show budge={budget} deleteBudget={deleteBudget}/>
             </Route>
             <Route path="/transactions/:index/edit">
-               <Edit budget={budget} deleteBudget={updateBudget}/>
+               <Edit budget={budget} updateBudget={updateBudget}/>
             </Route>
             <Route path="*">
                <Four0Four />

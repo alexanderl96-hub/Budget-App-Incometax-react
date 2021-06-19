@@ -40,7 +40,7 @@ export default function MapingLogs({neto, index}) {
                     <p><strong>$ {neto.pet}</strong></p>
                     <p><strong>$ {neto.insurrance}</strong></p>
                     <p><strong>$ {neto.additional}</strong></p>
-                    <p className="income"><strong> $ {neto.car}</strong></p>
+                    <p className="income"><strong> $ {}</strong></p>
                 </td>
             </tr>
         </div>
