@@ -8,34 +8,23 @@ const API_BASE = apiURL()
  function Logsapi(props) {
     const {deleteBudget} = props
 
-    // const [ budget, setBudget] = useState([])
-    // let { index } = useParams() 
-    // let history = useHistory()
+    const [ budget, setBudget] = useState([])
+    let { index } = useParams() 
+    let history = useHistory()
 
-//    useEffect(()=>{
-//        axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
-//            const { data} = res
-//            setBudget(data)
-//        }).catch((e)=>{
-//         history.push('/not-found')
-//     })
-//    }, [ index, history ])
+   useEffect(()=>{
+       axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
+           const { data} = res
+           setBudget(data)
+       }).catch((e)=>{
+        history.push('/not-found')
+    })
+   }, [ index, history ])
     
     const handleDelete = () => {
-        // deleteBudget(index);
-        // history.push("/transactions");
+        deleteBudget(index);
+        history.push("/transactions");
     };
-const date= 'May 1'
-const save ='May 1'
-const retirement= 'May 1'
-const taxes= 'May 1'
-const creditcard= 'May 1'
-const market= 'May 1'
-const internet= 'May 1'
-const car= 'May 1'
-const pet= 'May 1'
-const insurrance= 'May 1'
-const additional= 'May 1'
 
     return (  
         <article>
@@ -55,17 +44,17 @@ const additional= 'May 1'
                 </div>
            </div> 
            <div className="info">
-                <strong>Date: {date}</strong>
-                <p>Taxes % {taxes}</p>
-                <p>Retirement $ {retirement}</p>
-                <p>Save $ {save}</p>
-                <p>CreditCard $ {creditcard}</p>
-                <p>Market $ {market}</p>
-                <p>Internet $ {internet}</p>  
-                <p>Pet $ {pet}</p>  
-                <p>Car    $ {car}</p> 
-                <p>Insurrance $ {insurrance}</p>   
-                <p>Additional $ {additional}</p> 
+                <strong>Date: {budget.date}</strong>
+                <p>Taxes % {budget.taxes}</p>
+                <p>Retirement $ {budget.retirement}</p>
+                <p>Save $ {budget.save}</p>
+                <p>CreditCard $ {budget.creditcard}</p>
+                <p>Market $ {budget.market}</p>
+                <p>Internet $ {budget.internet}</p>  
+                <p>Pet $ {budget.pet}</p>  
+                <p>Car    $ {budget.car}</p> 
+                <p>Insurrance $ {budget.insurrance}</p>   
+                <p>Additional $ {budget.additional}</p> 
            </div>
         </article>
         

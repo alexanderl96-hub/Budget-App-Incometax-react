@@ -8,7 +8,9 @@ export default function Filters({budget}) {
             <section>
                 <table>
                     <tbody>
-                        {budget.map((neto, index) =>{ return  <MapingLogs key={index} neto={neto} index={index} />})}
+                        {budget.map((neto, index) =>{ 
+                            return  <MapingLogs key={index} neto={neto} index={index} />
+                            })}
                     </tbody>
                 </table>
             </section>

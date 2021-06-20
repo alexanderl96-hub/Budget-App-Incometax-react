@@ -14,7 +14,7 @@ import {withRouter} from "react-router-dom"
         car: [],
         insurrance: [],
         additional: [],
-        made: false,
+        made: true,
     })
     const HandleInput =(e)=>{
         setBudget({...budget, [e.target.id]:e.target.value})
