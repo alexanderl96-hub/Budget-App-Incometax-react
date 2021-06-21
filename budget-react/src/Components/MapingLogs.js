@@ -11,15 +11,18 @@ export default function MapingLogs({neto, index}) {
             <tr>
                 <td >
                     <p className="income" >
-                    { neto.made ? ( neto.made) 
+                    { neto.made ? (<span>⭐️</span> ) 
                     : 
-                    ( <span>⭐️</span>)
+                    (neto.made )
                     }
                     </p>
                 </td>
                 {" "}
                 <td>
-                { neto.name ?  neto.name :  neto.date}
+                    <p className="income" >
+                    { neto.name ?  neto.name :  neto.date}
+                    </p>
+                
                 </td>
                 <td >
                     <Link to={`/transactions/${index}`} className="income" >Income</Link>
