@@ -35,7 +35,7 @@ const API_BASE = apiURL()
                     </Link>
                 </div>
                 <div>
-                    <Link to={`/transactions/:index/edit`}> 
+                    <Link to={`/transactions/${index}/edit`}> 
                         <button className="btn">Edit</button>
                     </Link>
                 </div>

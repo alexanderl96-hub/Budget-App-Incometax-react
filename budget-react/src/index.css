@@ -92,6 +92,7 @@ code {
 .newtrans{
   margin-left: 20px;
   font-size: 20px;
+  text-decoration: underline;
 }
 @media(max-width:800px) and (min-width: 600px){
   body{
@@ -134,7 +135,7 @@ code {
     margin-left: 400px;
   } 
   .income{
-    margin-left: 120px;
+    margin-left: 110px;
   }
   .mybank{
     text-align: center;
@@ -170,6 +171,7 @@ code {
   .newtrans{
     margin-left: 20px;
     font-size: 30px;
+    text-decoration: none;
   }
   .link{
     font-size: 40px;

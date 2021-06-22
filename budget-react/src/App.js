@@ -16,9 +16,10 @@ const API_BASE = apiURL()
 
 function App() {
   const [budget, setBudget] = useState([])
-
+  
   // "Another way to doit in large web app": Myra concept 
   const addBudget = (newBudget)=>{
+   
     axios.post(`${API_BASE}/transactions`, newBudget).then((res)=>{
       return axios.get(`${API_BASE}/transactions`)
     }).then((res)=>{
@@ -86,7 +87,7 @@ function App() {
                <Show budge={budget} deleteBudget={deleteBudget}/>
             </Route>
             <Route path="/transactions/:index/edit">
-               <Edit budget={budget} updateBudget={updateBudget}/>
+               <Edit budge={budget} updateBudget={updateBudget}/>
             </Route>
             <Route path="*">
                <Four0Four />
