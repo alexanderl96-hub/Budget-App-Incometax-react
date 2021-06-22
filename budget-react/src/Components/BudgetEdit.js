@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState , useEffect} from "react";
 import { useParams, useHistory, withRouter } from "react-router-dom"
 import axios from "axios"
@@ -7,31 +6,34 @@ import {apiURL} from "../Back-end/apiURl.js"
 const API_BASE = apiURL()
 
 function BudgetEdit(props) {
-    const {updateBudget} = props
+
     let { index } = useParams() 
     let history = useHistory()
     const [val, setVal]= useState([])
+   
     
     const [budget, setBudget] = useState({
         date: '',
-        taxes: [],
-        retirement: [],
-        save: [],
-        creditcard: [],
-        market: [],
-        internet: [],
-        pet: [],
-        car: [],
-        insurrance: [],
-        additional: [],
+        taxes: '',
+        retirement: '',
+        save: '',
+        creditcard: '',
+        market: '',
+        internet: '',
+        pet: '',
+        car: '',
+        insurrance: '',
+        additional: '',
         made: true,
     })
     const HandleInput =(e)=>{
-        setBudget({...budget, [e.target.id]: e.target.value})
+        const {value} = e.target
+        setBudget({...budget, [e.target.id]: value})
     }
     const HandleCheck =()=>{
         setBudget({...budget, made: !budget.made})
     }
+    
     useEffect(()=>{
         axios.get(`${API_BASE}/transactions/${index}`).then((res)=>{
             const { data} = res
@@ -40,14 +42,25 @@ function BudgetEdit(props) {
          history.push('/not-found')
      })
     }, [ index, history ])
-
     
     const HandleSubmit = (e) => {
         e.preventDefault()
-        updateBudget(budget, index);
-        console.log()
-        console.log(updateBudget, index)
-        history.push(`/transactions/${index}`);
+        const {taxes, retirement, save, creditcard, market, internet, pet, car, insurrance, additional} = budget
+        const numbers = {
+            taxes : parseInt(taxes),
+            retirement: parseInt(retirement), 
+            save: parseInt(save),
+            creditcard: parseInt(creditcard),
+            market: parseInt(market),
+            internet: parseInt(internet),
+            pet: parseInt(pet),
+            car: parseInt(car),
+            insurrance: parseInt(insurrance),
+            additional:parseInt(additional),
+        }
+        const convien = {...budget, ...numbers}
+        props.updateBudget(convien, index);
+        history.push(`/transactions/`);
     };
    
     return (
@@ -56,10 +69,10 @@ function BudgetEdit(props) {
                 <label htmlFor="date">Date:</label>
                 <input
                 id="date"
-                value={val.date}
+                value={budget.date}
                 type="text"
                 onChange={HandleInput}
-                placeholder="Month-Day"
+                placeholder={val.date}
                 required/>
                 <label htmlFor="taxes">Taxes:</label>
                 <input
@@ -67,7 +80,7 @@ function BudgetEdit(props) {
                 value={budget.taxes}
                 type="number"
                 onChange={HandleInput}
-                placeholder="%"
+                placeholder={val.taxes}
                 required/>
                 <label htmlFor="retirement">Retirement:</label>
                 <input
@@ -75,7 +88,7 @@ function BudgetEdit(props) {
                 value={budget.retirement}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Amount"
+                placeholder={val.retirement}
                 required/>
                 <label htmlFor="save">Save:</label>
                 <input
@@ -83,7 +96,7 @@ function BudgetEdit(props) {
                 value={budget.save}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Total"
+                placeholder={val.save}
                 required/>
                 <label htmlFor="creditcard">CreditCard:</label>
                 <input
@@ -91,7 +104,7 @@ function BudgetEdit(props) {
                 value={budget.creditcard}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Income"
+                placeholder={val.creditcard}
                 required/>
                 <label htmlFor="market">Market:</label>
                 <input
@@ -99,7 +112,7 @@ function BudgetEdit(props) {
                 value={budget.market}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Spent"
+                placeholder={val.market}
                 required/>
                 <label htmlFor="internet">Internet:</label>
                 <input
@@ -107,7 +120,7 @@ function BudgetEdit(props) {
                 value={budget.internet}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Monthly"
+                placeholder={val.internet}
                 required/>
                 <label htmlFor="pet">Pet:</label>
                 <input
@@ -115,7 +128,7 @@ function BudgetEdit(props) {
                 value={budget.pet}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Food"
+                placeholder={val.pet}
                 required/>
                 <label htmlFor="car">Car:</label>
                 <input
@@ -123,7 +136,7 @@ function BudgetEdit(props) {
                 value={budget.car}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Monthly"
+                placeholder={val.car}
                 required/>
                 <label htmlFor="insurrance">Insurrance:</label>
                 <input
@@ -131,7 +144,7 @@ function BudgetEdit(props) {
                 value={budget.insurrance}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Amount"
+                placeholder={val.insurrance}
                 required/> 
                 <label htmlFor="additional">Additional:</label>
                 <input
@@ -139,7 +152,7 @@ function BudgetEdit(props) {
                 value={budget.additional}
                 type="number"
                 onChange={HandleInput}
-                placeholder="$ Amount"
+                placeholder={val.additional}
                 required/>
                 <label htmlFor="made">Made:</label>
                 <input

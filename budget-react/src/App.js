@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import {apiURL} from "./Back-end/apiURl.js";
 
+
 //Pages to represent the info in the browser
 import Navbar from "./Components/Navbar.js"
 import Home from "./Pages/Home"
@@ -47,18 +48,20 @@ function App() {
       (err)=>{console.log(err)})
   }
   const updateBudget = (updateBudget, index)=>{
+    console.log(API_BASE)
     axios.put(`${API_BASE}/transactions/${index}`, updateBudget).then(
       //success
       (res)=>{
+        console.log(res.data)
         const update = [...budget]
         update[index]= updateBudget
         setBudget(update)
       },
       //error
-      (error)=>{
+      (error)=>
         console.log(error)
-      }
     )
+    .catch((c)=> console.warn("cacth", c))
   }
 
   useEffect(()=> {
@@ -75,13 +78,13 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home className="page"/>
             </Route>
             <Route exact path="/transactions">
                <Index budget={budget}/>
             </Route>
             <Route path="/transactions/new">
-               <New addBudget={addBudget}/>
+               <New addBudget={addBudget} className="page"/>
             </Route>
             <Route exact path="/transactions/:index">
                <Show budge={budget} deleteBudget={deleteBudget}/>

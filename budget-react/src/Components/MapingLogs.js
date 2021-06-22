@@ -8,24 +8,24 @@ export default function MapingLogs({neto, index}) {
     console.log(income)
     return (
         <div className="table">
-            <tr>
-                <td >
+            <tr className="color">
+                <td  className="box" >
                     <p className="income" >
                     { neto.made ? (<span>⭐️</span> ) 
                     : 
-                    (null)
+                    (<span>&nbsp; &nbsp; &nbsp;</span>)
                     }
                     </p>
                 </td>
-                <td>
+                <td  className="box" >
                     <p className="income" >
                     { neto.name ?  neto.name :  neto.date}
                     </p>
                 </td>
-                <td >
+                <td className="box" >
                     <Link to={`/transactions/${index}`} className="income" >Income</Link>
                 </td>
-                <td >
+                <td className="box" >
                     <p className="income"><strong> $ {income}</strong></p>
                 </td>
             </tr>

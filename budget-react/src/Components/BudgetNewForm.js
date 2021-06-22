@@ -4,27 +4,43 @@ import {withRouter} from "react-router-dom"
  function BudgetNewForm(props) {
     const [budget, setBudget] = useState({
         date: '',
-        taxes: [],
-        retirement: [],
-        save: [],
-        creditcard: [],
-        market: [],
-        internet: [],
-        pet: [],
-        car: [],
-        insurrance: [],
-        additional: [],
+        taxes: '',
+        retirement: '',
+        save: '',
+        creditcard: '',
+        market: '',
+        internet: '',
+        pet: '',
+        car: '',
+        insurrance: '',
+        additional: '',
         made: true,
     })
     const HandleInput =(e)=>{
-        setBudget({...budget, [e.target.id]:e.target.value})
+        const {value} = e.target
+        console.log(typeof value)
+        setBudget({...budget, [e.target.id]: value })
     }
     const HandleCheck =()=>{
         setBudget({...budget, made: !budget.made})
     }
     const HandleSubmit =(e)=>{
         e.preventDefault()
-        props.addBudget(budget)
+         const {taxes, retirement, save, creditcard, market, internet, pet, car, insurrance, additional} = budget
+         const numbers = {
+             taxes : parseInt(taxes),
+             retirement: parseInt(retirement), 
+             save: parseInt(save),
+             creditcard: parseInt(creditcard),
+             market: parseInt(market),
+             internet: parseInt(internet),
+             pet: parseInt(pet),
+             car: parseInt(car),
+             insurrance: parseInt(insurrance),
+             additional:parseInt(additional),
+         }
+         const convien = {...budget, ...numbers}
+        props.addBudget(convien)
         props.history.push("/transactions")
     }
     return (
@@ -44,7 +60,7 @@ import {withRouter} from "react-router-dom"
              value={budget.taxes}
              type="number"
              onChange={HandleInput}
-             placeholder="%"
+             placeholder="$"
              required/>
             <label htmlFor="retirement">Retirement:</label>
             <input
