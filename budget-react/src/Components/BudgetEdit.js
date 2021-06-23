@@ -10,8 +10,7 @@ function BudgetEdit(props) {
     let { index } = useParams() 
     let history = useHistory()
     const [val, setVal]= useState([])
-   
-    
+
     const [budget, setBudget] = useState({
         date: '',
         taxes: '',
@@ -24,7 +23,7 @@ function BudgetEdit(props) {
         car: '',
         insurrance: '',
         additional: '',
-        made: true,
+        made: false,
     })
     const HandleInput =(e)=>{
         const {value} = e.target
@@ -57,6 +56,7 @@ function BudgetEdit(props) {
             car: parseInt(car),
             insurrance: parseInt(insurrance),
             additional:parseInt(additional),
+    
         }
         const convien = {...budget, ...numbers}
         props.updateBudget(convien, index);

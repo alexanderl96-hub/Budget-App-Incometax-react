@@ -5,7 +5,6 @@ export default function MapingLogs({neto, index}) {
     
    const income = neto.car + neto.taxes + neto.retirement + neto.save + neto.creditcard + neto.market + neto.internet + neto.pet + neto.insurrance + neto.additional
     
-    console.log(income)
     return (
         <div className="table">
             <tr className="color">

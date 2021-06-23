@@ -78,13 +78,13 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/">
-              <Home className="page"/>
+              <Home />
             </Route>
             <Route exact path="/transactions">
                <Index budget={budget}/>
             </Route>
             <Route path="/transactions/new">
-               <New addBudget={addBudget} className="page"/>
+               <New addBudget={addBudget} />
             </Route>
             <Route exact path="/transactions/:index">
                <Show budge={budget} deleteBudget={deleteBudget}/>

@@ -133,9 +133,11 @@ code {
   }
   .info{
     margin-top: -110px;
-    margin-right: 425px;
+    margin-left: 425px;
     float: right;
+    
   }
+ 
   .nav{
     background-color: aquamarine;
     display: flex;

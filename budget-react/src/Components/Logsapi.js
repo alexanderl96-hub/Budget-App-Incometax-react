@@ -43,19 +43,20 @@ const API_BASE = apiURL()
                 <button onClick={handleDelete} className="btn">Delete</button>
                 </div>
            </div> 
-           <div className="info">
-                <strong>Date: {budget.date}</strong>
-                <p>Taxes % {budget.taxes}</p>
-                <p>Retirement $ {budget.retirement}</p>
-                <p>Save $ {budget.save}</p>
-                <p>CreditCard $ {budget.creditcard}</p>
-                <p>Market $ {budget.market}</p>
-                <p>Internet $ {budget.internet}</p>  
-                <p>Pet $ {budget.pet}</p>  
-                <p>Car    $ {budget.car}</p> 
-                <p>Insurrance $ {budget.insurrance}</p>   
-                <p>Additional $ {budget.additional}</p> 
-           </div>
+            <div className="info">
+                    <strong>Date: {budget.date}</strong>
+                    <p>Taxes % {budget.taxes}</p>
+                    <p>Retirement $ {budget.retirement}</p>
+                    <p>Save $ {budget.save}</p>
+                    <p>CreditCard $ {budget.creditcard}</p>
+                    <p>Market $ {budget.market}</p>
+                    <p>Internet $ {budget.internet}</p>  
+                    <p>Pet $ {budget.pet}</p>  
+                    <p>Car    $ {budget.car}</p> 
+                    <p>Insurrance $ {budget.insurrance}</p>   
+                    <p>Additional $ {budget.additional}</p> 
+            </div>
+          
         </article>
         
     )

@@ -14,7 +14,7 @@ import {withRouter} from "react-router-dom"
         car: '',
         insurrance: '',
         additional: '',
-        made: true,
+        made: false,
     })
     const HandleInput =(e)=>{
         const {value} = e.target
