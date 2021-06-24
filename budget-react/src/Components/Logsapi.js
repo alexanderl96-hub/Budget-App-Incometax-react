@@ -45,7 +45,7 @@ const API_BASE = apiURL()
            </div> 
             <div className="info">
                     <strong>Date: {budget.date}</strong>
-                    <p>Taxes % {budget.taxes}</p>
+                    <p>Taxes $ {budget.taxes}</p>
                     <p>Retirement $ {budget.retirement}</p>
                     <p>Save $ {budget.save}</p>
                     <p>CreditCard $ {budget.creditcard}</p>
