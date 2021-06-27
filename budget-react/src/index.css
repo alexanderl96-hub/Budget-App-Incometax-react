@@ -132,11 +132,9 @@ code {
     border-radius: 30px;
   }
   .info{
-    display: grid;
     margin-top: -110px;
     margin-right: 600px;
     float: right;
-    
   }
   
   .nav{
